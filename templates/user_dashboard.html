@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}User Dashboard{% endblock %}
+
+{% block content %}
+
+<h2>User Dashboard</h2>
+<p>Welcome, {{ username }}!</p>
+
+<!-- Add content specific to the user dashboard -->
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Your Profile</h5>
+        <p class="card-text">Display your profile information and settings here.</p>
+    </div>
+</div>
+
+<!-- Example of using Bootstrap grid system -->
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Your Recent Activity</h5>
+                <p class="card-text">Show recent activities or updates related to your account.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Your Favorites</h5>
+                <p class="card-text">Display your favorite items or saved content.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

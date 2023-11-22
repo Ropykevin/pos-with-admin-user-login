@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Login</h2>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="alert alert-{{ messages[0][1] }}">
+        {% for message in messages %}
+        <li>{{ message[0] }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.email.label(class="form-control-label") }}
+            {{ form.email(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.password.label(class="form-control-label") }}
+            {{ form.password(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

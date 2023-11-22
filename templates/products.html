@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Products</h2>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductModal">
+        Add Product
+    </button>
+
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Buying Price</th>
+                <th>Selling Price</th>
+                <th>Stock Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.buying_price }}</td>
+                <td>{{ product.selling_price }}</td>
+                <td>{{ product.stock_quantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Add Product Modal -->
+<div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <form method="POST" action="{{ url_for('add_product') }}">
+                    {{ form.hidden_tag() }}
+
+                    <div class="mb-3">
+                        {{ form.name.label(class="form-label") }}
+                        {{ form.name(class="form-control") }}
+                        {% for error in form.name.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.description.label(class="form-label") }}
+                        {{ form.description(class="form-control") }}
+                        {% for error in form.description.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.buying_price.label(class="form-label") }}
+                        {{ form.buying_price(class="form-control") }}
+                        {% for error in form.buying_price.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.selling_price.label(class="form-label") }}
+                        {{ form.selling_price(class="form-control") }}
+                        {% for error in form.selling_price.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.stock_quantity.label(class="form-label") }}
+                        {{ form.stock_quantity(class="form-control") }}
+                        {% for error in form.stock_quantity.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Add Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

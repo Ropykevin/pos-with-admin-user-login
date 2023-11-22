@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class="alert alert-{{ messages[0][1] }}">
+    {% for message in messages %}
+    <li>{{ message[0] }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+{% if username %}
+<p>Welcome, {{ username }}!</p>
+{% endif %}
+
+<!-- Add content specific to the admin dashboard -->
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Admin Features</h5>
+        <p class="card-text">Add your admin-specific content here.</p>
+    </div>
+</div>
+
+<!-- Example of using Bootstrap grid system -->
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Admin Statistics</h5>
+                <p class="card-text">Display some statistics or charts here.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Recent Admin Activities</h5>
+                <p class="card-text">Show recent admin activities or logs.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}*

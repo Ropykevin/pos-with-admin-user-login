@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Landing Page{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Welcome to the Landing Page</h2>
+    <p>This is a simple landing page for your application.</p>
+    <p><a href="{{ url_for('register') }}">Register</a> to access the dashboard.</p>
+
+    <p><a href="{{ url_for('login') }}">Login</a> to access the dashboard.</p>
+</div>
+{% endblock %}
